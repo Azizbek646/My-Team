@@ -1,11 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Page</title>
+    <link rel="stylesheet" href="./css/style.min.css" />
+  </head>
+  <body class="dark">
+    <div id="loading">
+      <script
+        src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
+        type="module"
+      ></script>
+      <dotlottie-wc
+        src="https://lottie.host/f3a25814-6a5b-4a9b-b66f-f0ecde9ab834/OVE4CCH6Dz.lottie"
+        style="width: 300px; height: 300px"
+        speed="1"
+        autoplay
+        loop
+      ></dotlottie-wc>
+    </div>
+
+    <style>
+      @import url(./scss/_fonts.scss);
+      @import url(/scss/_comman.scss);
+
+      /* Кнопка гамбургер */
+      .hamburger-btn {
+        display: none;
+        position: fixed;
+        top: 65px;
+        /* left: 24px; */
+        right: 40px;
+        z-index: 10;
+      }
+
+      .hamburger-btn img {
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+      }
+
+      /* Меню */
+      .mobile-menu {
+        display: none;
+      }
+
+      .mobile-menu.show {
+        display: flex !important;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%;
+        height: 100%;
+        background-color: rgba(44, 98, 105, 1);
+        padding: 56px 45px 0 58px;
+        z-index: 1000;
+        /* text-align: center; */
+        animation: slideIn 0.3s ease forwards;
+        background-image: url(./images/group85.svg);
+        background-repeat: no-repeat;
+        background-position: bottom right;
+      }
+
+      /* Верхняя панель "Меню X" */
+      .menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 40px;
+      }
+
+      .cont {
+        text-align: center;
+      }
+
+      .contr {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 28px;
+        letter-spacing: 0px;
+        text-align: center;
+        padding: 9px 34px 11px 33px;
+        border: 2px solid white;
+        border-radius: 28px;
+      }
+
+      .cont .contr:hover {
+        color: black;
+        background-color: white;
+      }
+
+      .menu-header button {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      /* Навигация */
+      .mobile-menu a {
+        color: rgba(255, 255, 255, 1);
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        transition: 0.5s;
+      }
+
+      .mobile-menu a:hover {
+        color: rgb(245, 125, 125);
+      }
+
+      @media (max-width: 390px) {
+        .mobile-menu.show {
+          padding: 56px 25px 0 35px;
+        }
+        .mobile-menu a {
+          font-size: 14px;
+        }
+      }
+
+      /* Анимация */
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+        }
+        to {
+          transform: translateX(0%);
+        }
+      }
+
+      /* Показать гамбургер на маленьких экранах */
+      @media (max-width: 768px) {
+        .hamburger-btn {
+          display: block;
+        }
+      }
+    </style>
+
+    <!-- Кнопка гамбургер -->
+    <a href="#" id="openMenu" class="hamburger-btn">
+      <img src="./images/menu.svg" alt="menu" />
+    </a>
+
+    <!-- Мобильное меню -->
+    <div id="mobileMenu" class="mobile-menu">
+      <div class="menu-header">
+        <span></span>
+        <button id="closeMenu">
+          <img src="./images/Group 2 (1).svg" alt="" />
+        </button>
+      </div>
+      <a href="#">home</a>
+      <a href="#">about</a>
+      <div class="cont">
+        <a class="contr" href="#">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- Скрипт -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const openMenu = document.getElementById("openMenu");
+        const closeMenu = document.getElementById("closeMenu");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        openMenu?.addEventListener("click", (e) => {
+          e.preventDefault();
+          mobileMenu.classList.add("show");
+        });
+
+        closeMenu?.addEventListener("click", (e) => {
+          e.preventDefault();
+          mobileMenu.classList.remove("show");
+        });
+      });
+    </script>
+
+    <div class="back">
+      <div class="container">
+        <header>
+          <div class="header-link">
+            <div class="brand-logo">
+              <img id="log" src="./images/myteam.svg" alt="img?" />
+            </div>
+            <div class="nav-menu">
+              <div class="home-about">
+                <a href="#">home</a>
+                <a href="#">about</a>
+              </div>
+              <div class="contact">
+                <a href="./pages/contact.html">contact us</a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="body">
+          <div class="find-text">
+            <h1>Find the best <span>talent</span></h1>
+          </div>
+          <div class="text">
+            <img src="./images/Rectangle.svg" alt="" />
+            <p>
+              Finding the right people and building high performing teams can be
+              hard. Most companies aren’t tapping into the abundance of global
+              talent. We’re about to change that.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="back1">
+      <div class="body-container">
+        <div class="top">
+          <div class="line">
+            <img src="./images/line.svg" alt="" />
+          </div>
+          <div class="text">
+            <h1>Build & manage distributed teams like no one else.</h1>
+          </div>
+        </div>
+        <div class="center">
+          <div class="cards">
+            <div class="card">
+              <div class="card-img">
+                <img src="./images/icon-experienced-1.svg" alt="icon?" />
+              </div>
+              <div class="card-text">
+                <h4>Experienced Individuals</h4>
+                <p>
+                  Our network is made up of highly experienced professionals who
+                  are passionate about what they do.
+                </p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-img">
+                <img src="./images/icon-gear.svg" alt="icon?" />
+              </div>
+              <div class="card-text">
+                <h4>Easy to Implement</h4>
+                <p>
+                  Our processes have been refined over years of implementation
+                  meaning our teams always deliver.
+                </p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-img">
+                <img src="./images/icon-stat.svg" alt="icon?" />
+              </div>
+              <div class="card-text">
+                <h4>Enhanced Productivity</h4>
+                <p>
+                  Our customized platform with in-built analytics helps you
+                  manage your distributed teams.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="back2">
+      <div class="bottom-container">
+        <div class="logo">
+          <img src="./images/logo.svg" alt="logo?" />
+        </div>
+        <div class="text-center">
+          <h1>
+            Delivering real results for top companies. Some of our
+            <span> success stories. </span>
+          </h1>
+        </div>
+        <div class="center">
+          <div class="card">
+            <div class="card-head">
+              <p>
+                “The team perfectly fit the specialized skill set required. They
+                focused on the most essential features helping us launch the
+                platform eight months faster than planned.”
+              </p>
+            </div>
+            <div class="card-footer">
+              <h4>Kady Baker</h4>
+              <p>Product Manager at Bookmark</p>
+              <img src="./images/kady.svg" alt="img?" />
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head">
+              <p>
+                “We needed to automate our entire onboarding process. The team
+                came in and built out the whole journey. Since going live, user
+                retention has gone through the roof!”
+              </p>
+            </div>
+            <div class="card-footer">
+              <h4>Aiysha Reese</h4>
+              <p>Founder of Manage</p>
+              <img src="./images/Aiy.svg" alt="img?" />
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head">
+              <p>
+                “Amazing. Our team helped us build an app that delivered a new
+                experience for hiring a physio. The launch was an instant
+                success with 100k downloads in the first month.”
+              </p>
+            </div>
+            <div class="card-footer">
+              <h4>Arthur Clarke</h4>
+              <p>Co-founder of MyPhysio</p>
+              <img src="./images/arthur.svg" alt="img?" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="back3">
+      <div class="bottom-container_one">
+        <div class="text">
+          <h1>Ready to get started?</h1>
+          <a href="./html/contact.html">contact us</a>
+        </div>
+      </div>
+    </div>
+    <div class="back4">
+      <div class="footer-container">
+        <div class="centers">
+          <div class="center">
+            <div class="column">
+              <div class="logo">
+                <img src="./images/myteam 2.svg" alt="img?" />
+              </div>
+              <div class="home-about">
+                <a href="#">home</a>
+                <a href="./html/about.html">about</a>
+              </div>
+            </div>
+            <div class="text">
+              <p>987 Hillcrest Lane</p>
+              <p>Irvine, CA</p>
+              <p>California 92714</p>
+              <p>Call Us:949-833-7432</p>
+            </div>
+          </div>
+          <div class="center-bottom">
+            <div class="social">
+              <a href="#"><img src="./images/facebook.svg" alt="" /></a>
+              <a href="#"><img src="./images/pinterest.svg" alt="" /></a>
+              <a href="#"><img src="./images/twitter.svg" alt="" /></a>
+            </div>
+            <div class="bottom-text">
+              <p>Copyright 2020. All Rights Reserved</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- scroll -->
+    <button id="scrollBtn" class="scroll-btn"></button>
+
+    <script src="./js/main.js"></script>
+  </body>
 </html>
