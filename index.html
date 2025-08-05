@@ -142,6 +142,62 @@
       }
     </style>
 
+    <style>
+      body.dark {
+        background-color: #0b0d17;
+        color: white;
+      }
+
+      body.light {
+        background-color: white;
+        color: #333;
+      }
+
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 100;
+        background: none;
+        border: 2px solid currentColor;
+        color: inherit;
+        padding: 6px 12px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .theme-toggle:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Кнопки по кругу */
+      .moving-button {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 100;
+      }
+
+      /* Сообщение */
+      .warning-text {
+        position: fixed;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 30px;
+        color: red;
+        font-weight: bold;
+        display: none;
+        z-index: 100;
+      }
+    </style>
+
     <!-- Кнопка гамбургер -->
     <a href="#" id="openMenu" class="hamburger-btn">
       <img src="./images/menu.svg" alt="menu" />
@@ -194,7 +250,7 @@
                 <a href="#">about</a>
               </div>
               <div class="contact">
-                <a href="./pages/contact.html">contact us</a>
+                <a href="./html/contact.html">contact us</a>
               </div>
             </div>
           </div>
@@ -364,6 +420,77 @@
         </div>
       </div>
     </div>
+
+    <!-- Переключатель темы -->
+    <button id="themeToggle" class="theme-toggle">Light</button>
+
+    <!-- Двигающиеся кнопки -->
+    <button class="moving-button" id="btn1">🔴</button>
+    <button class="moving-button" id="btn2">🟢</button>
+
+    <!-- Сообщение -->
+    <div id="warning" class="warning-text">Don't click me</div>
+
+    <!-- <script>
+      // === Тема ===
+      const toggleBtn = document.getElementById("themeToggle");
+      const body = document.body;
+
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        body.className = savedTheme;
+        toggleBtn.textContent = savedTheme === "dark" ? "Light" : "Dark";
+      }
+
+      toggleBtn.addEventListener("click", () => {
+        if (body.classList.contains("dark")) {
+          body.classList.remove("dark");
+          body.classList.add("light");
+          toggleBtn.textContent = "Dark";
+          localStorage.setItem("theme", "light");
+        } else {
+          body.classList.remove("light");
+          body.classList.add("dark");
+          toggleBtn.textContent = "Light";
+          localStorage.setItem("theme", "dark");
+        }
+      });
+
+      // === Двигающиеся кнопки ===
+      const btn1 = document.getElementById("btn1");
+      const btn2 = document.getElementById("btn2");
+      const warning = document.getElementById("warning");
+
+      let angle1 = 0;
+      let angle2 = Math.PI;
+
+      function moveButtons() {
+        const radius = 120;
+        const centerX = window.innerWidth / 2 - 30;
+        const centerY = window.innerHeight / 2 - 30;
+
+        btn1.style.left = `${centerX + radius * Math.cos(angle1)}px`;
+        btn1.style.top = `${centerY + radius * Math.sin(angle1)}px`;
+
+        btn2.style.left = `${centerX + radius * Math.cos(angle2)}px`;
+        btn2.style.top = `${centerY + radius * Math.sin(angle2)}px`;
+
+        angle1 += 0.02;
+        angle2 += 0.015;
+
+        requestAnimationFrame(moveButtons);
+      }
+
+      btn1.addEventListener("click", () => {
+        warning.style.display = "block";
+      });
+
+      btn2.addEventListener("click", () => {
+        warning.style.display = "block";
+      });
+
+      moveButtons();
+    </script> -->
 
     <!-- scroll -->
     <button id="scrollBtn" class="scroll-btn"></button>

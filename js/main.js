@@ -42,3 +42,26 @@ function validateForm() {
   }
 }
 
+// === Тема ===
+const toggleBtn = document.getElementById("themeToggle");
+const body = document.body;
+
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme) {
+  body.className = savedTheme;
+  toggleBtn.textContent = savedTheme === "dark" ? "Light" : "Dark";
+}
+
+toggleBtn.addEventListener("click", () => {
+  if (body.classList.contains("dark")) {
+    body.classList.remove("dark");
+    body.classList.add("light");
+    toggleBtn.textContent = "Dark";
+    localStorage.setItem("theme", "light");
+  } else {
+    body.classList.remove("light");
+    body.classList.add("dark");
+    toggleBtn.textContent = "Light";
+    localStorage.setItem("theme", "dark");
+  }
+});
